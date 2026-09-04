@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#effffb" />
+    <meta
+      name="description"
+      content="服务评价主题 3D 插画展示"
+    />
+    <title>服务评价 · 3D 插画</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        --ink: #103a37;
+        --muted: #688581;
+        --accent: #00ad98;
+        --accent-dark: #087d73;
+        --surface: rgba(255, 255, 255, 0.72);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100svh;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 14% 12%, rgba(167, 255, 228, 0.82), transparent 32%),
+          radial-gradient(circle at 86% 80%, rgba(27, 205, 190, 0.3), transparent 34%),
+          linear-gradient(145deg, #f8fffd 0%, #e9fbf6 52%, #dff8f2 100%);
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        width: 34rem;
+        aspect-ratio: 1;
+        border: 1px solid rgba(0, 173, 152, 0.12);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      body::before {
+        top: -21rem;
+        right: -12rem;
+      }
+
+      body::after {
+        bottom: -25rem;
+        left: -14rem;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: clamp(20px, 4vw, 56px);
+      }
+
+      .showcase {
+        width: min(1080px, 100%);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 1.12fr);
+        align-items: center;
+        gap: clamp(24px, 5vw, 72px);
+        padding: clamp(24px, 5vw, 64px);
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        border-radius: clamp(28px, 4vw, 52px);
+        background: var(--surface);
+        box-shadow:
+          0 28px 80px rgba(27, 119, 106, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .content {
+        max-width: 30rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 2px;
+        border-radius: 99px;
+        background: var(--accent);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(40px, 6vw, 72px);
+        line-height: 1.06;
+        letter-spacing: -0.045em;
+      }
+
+      .lead {
+        max-width: 25rem;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: clamp(15px, 1.5vw, 18px);
+        line-height: 1.8;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        margin-top: 30px;
+        padding: 0 15px;
+        border: 1px solid rgba(0, 173, 152, 0.22);
+        border-radius: 999px;
+        color: var(--accent-dark);
+        background: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .artwork {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-width: 0;
+      }
+
+      .artwork::before {
+        content: "";
+        position: absolute;
+        width: 82%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(35, 226, 197, 0.29), rgba(35, 226, 197, 0) 68%);
+        filter: blur(12px);
+        transform: translateY(7%);
+      }
+
+      .artwork img {
+        position: relative;
+        display: block;
+        width: min(100%, 580px);
+        height: auto;
+        filter: drop-shadow(0 30px 25px rgba(4, 100, 89, 0.12));
+        animation: float 5.5s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media (max-width: 760px) {
+        main {
+          align-items: start;
+          padding: 14px;
+        }
+
+        .showcase {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          min-height: calc(100svh - 28px);
+          padding: 34px 22px 20px;
+          border-radius: 28px;
+        }
+
+        .content {
+          text-align: center;
+          margin-inline: auto;
+        }
+
+        .eyebrow {
+          justify-content: center;
+        }
+
+        .lead {
+          margin: 14px auto 0;
+          line-height: 1.65;
+        }
+
+        .tag {
+          margin-top: 20px;
+        }
+
+        .artwork img {
+          width: min(100%, 460px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .artwork img {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="showcase" aria-labelledby="page-title">
+        <div class="content">
+          <p class="eyebrow">Customer Experience</p>
+          <h1 id="page-title">每一次评价<br />都值得回应</h1>
+          <p class="lead">倾听真实反馈，持续打磨服务体验，让每一次互动都更贴近期待。</p>
+          <span class="tag">服务评价 · 3D 插画</span>
+        </div>
+
+        <figure class="artwork">
+          <img
+            src="./assets/review-graphic.png"
+            width="648"
+            height="648"
+            alt="带有四颗星、文档和鼠标指针的绿色立体服务评价插画"
+          />
+        </figure>
+      </section>
+    </main>
+  </body>
+</html>
