@@ -268,10 +268,11 @@
         return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
       });
     }
-    /* 目录 → 站点路径；隐藏文件 → GitHub blob（Pages 不发布点文件） */
+    /* 目录 → 页内逐级进入（hash 路由，避免目录无 index.html 时 404）
+       隐藏文件 → GitHub blob（Pages 不发布点文件）；其余文件 → 站点直链 */
     function itemHref(item) {
       var path = encodePath(item.path);
-      if (item.type === 'dir') return '/' + path + '/';
+      if (item.type === 'dir') return '#/' + path;
       if (item.name.charAt(0) === '.') return REPO_URL + '/blob/main/' + path;
       return '/' + path;
     }
